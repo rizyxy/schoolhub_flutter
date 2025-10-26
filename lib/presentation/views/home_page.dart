@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:schoolhub_flutter/presentation/bloc/subject_bloc/subject_bloc.dart';
+import 'package:schoolhub_flutter/presentation/widgets/subject/subject_bloc_consumer.dart';
 import 'package:schoolhub_flutter/presentation/widgets/subject/subject_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,7 +24,7 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              SubjectList()
+              SubjectBlocConsumer()
             ],
           ),
         ),
