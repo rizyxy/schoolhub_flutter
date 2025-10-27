@@ -25,7 +25,9 @@ class SubjectPage extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              TopicBlocConsumer()
+              TopicBlocConsumer(
+                subject: subject,
+              )
             ],
           ),
         ),

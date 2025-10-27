@@ -23,7 +23,8 @@ class SubjectList extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => BlocProvider(
-                          create: (context) => TopicBloc()..add(FetchTopics()),
+                          create: (context) => TopicBloc()
+                            ..add(FetchTopics(subject: subjects[index])),
                           child: SubjectPage(subject: subjects[index]))));
             },
             child: ItemCard(

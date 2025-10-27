@@ -11,7 +11,14 @@ class TopicInitial extends TopicState {}
 
 class TopicLoading extends TopicState {}
 
-class TopicSuccess extends TopicState {}
+class TopicSuccess extends TopicState {
+  final List<TopicModel> topics;
+
+  const TopicSuccess({required this.topics});
+
+  @override
+  List<Object?> get props => [topics];
+}
 
 class TopicError extends TopicState {
   final String? errorMessage;

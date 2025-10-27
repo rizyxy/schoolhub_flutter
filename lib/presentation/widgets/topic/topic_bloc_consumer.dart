@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:schoolhub_flutter/data/model/subject.dart';
 import 'package:schoolhub_flutter/presentation/bloc/topic_bloc/topic_bloc.dart';
 import 'package:schoolhub_flutter/presentation/widgets/shared/item_card.dart';
+import 'package:schoolhub_flutter/presentation/widgets/topic/topic_list.dart';
 
 class TopicBlocConsumer extends StatelessWidget {
-  const TopicBlocConsumer({
-    super.key,
-  });
+  const TopicBlocConsumer({super.key, required this.subject});
+
+  final SubjectModel subject;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,9 @@ class TopicBlocConsumer extends StatelessWidget {
             children: <Widget>[
               InkWell(
                   onTap: () {
-                    context.read<TopicBloc>().add(FetchTopics());
+                    context
+                        .read<TopicBloc>()
+                        .add(FetchTopics(subject: subject));
                   },
                   child: Icon(Icons.restart_alt)),
               Text("Tap to Retry")
@@ -42,18 +46,9 @@ class TopicBlocConsumer extends StatelessWidget {
         }
 
         if (state is TopicSuccess) {
-          return ListView.separated(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return ItemCard(itemName: "Topic ${index}");
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(
-                  height: 20,
-                );
-              },
-              itemCount: 10);
+          return TopicList(
+            topics: state.topics,
+          );
         }
 
         return SizedBox.shrink();
