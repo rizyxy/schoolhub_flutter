@@ -11,7 +11,14 @@ class DrillHistoryInitial extends DrillHistoryState {}
 
 class DrillHistoryLoading extends DrillHistoryState {}
 
-class DrillHistorySuccess extends DrillHistoryState {}
+class DrillHistorySuccess extends DrillHistoryState {
+  final List<DrillModel> drills;
+
+  const DrillHistorySuccess({required this.drills});
+
+  @override
+  List<Object?> get props => [drills];
+}
 
 class DrillHistoryError extends DrillHistoryState {
   final String? errorMessage;

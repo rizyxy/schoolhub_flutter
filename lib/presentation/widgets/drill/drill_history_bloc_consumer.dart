@@ -37,7 +37,9 @@ class DrillHistoryBlocConsumer extends StatelessWidget {
         }
 
         if (state is DrillHistorySuccess) {
-          return DrillList();
+          return DrillList(
+            drills: state.drills,
+          );
         }
 
         return SizedBox.shrink();
