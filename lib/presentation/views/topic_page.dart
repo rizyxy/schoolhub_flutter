@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolhub_flutter/data/model/topic.dart';
+import 'package:schoolhub_flutter/presentation/bloc/drill_history_bloc/drill_history_bloc.dart';
+import 'package:schoolhub_flutter/presentation/widgets/drill/drill_history_bloc_consumer.dart';
 import 'package:schoolhub_flutter/presentation/widgets/drill/drill_list.dart';
 
 class TopicPage extends StatelessWidget {
@@ -30,7 +33,10 @@ class TopicPage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            DrillList()
+            BlocProvider(
+                create: (context) =>
+                    DrillHistoryBloc()..add(FetchDrillHistories()),
+                child: DrillHistoryBlocConsumer())
           ],
         ),
       )),
