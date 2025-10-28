@@ -9,6 +9,7 @@ class DrillList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 5,
       itemBuilder: (context, index) {
