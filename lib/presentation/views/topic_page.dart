@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolhub_flutter/data/model/topic.dart';
-import 'package:schoolhub_flutter/presentation/bloc/drill_history_bloc/drill_history_bloc.dart';
-import 'package:schoolhub_flutter/presentation/widgets/drill/drill_history_bloc_consumer.dart';
+import 'package:schoolhub_flutter/presentation/bloc/drill_bloc/drill_bloc.dart';
+import 'package:schoolhub_flutter/presentation/widgets/drill/drill_bloc_consumer.dart';
 import 'package:schoolhub_flutter/presentation/widgets/drill/drill_list.dart';
 
 class TopicPage extends StatelessWidget {
@@ -27,16 +27,15 @@ class TopicPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "Drill History",
+              "Ongoing Drills",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 10,
             ),
             BlocProvider(
-                create: (context) =>
-                    DrillHistoryBloc()..add(FetchDrillHistories()),
-                child: DrillHistoryBlocConsumer())
+                create: (context) => DrillBloc()..add(FetchDrills()),
+                child: DrillBlocConsumer())
           ],
         ),
       )),

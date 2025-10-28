@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:schoolhub_flutter/presentation/bloc/drill_history_bloc/drill_history_bloc.dart';
+import 'package:schoolhub_flutter/presentation/bloc/drill_bloc/drill_bloc.dart';
 import 'package:schoolhub_flutter/presentation/widgets/drill/drill_list.dart';
 
-class DrillHistoryBlocConsumer extends StatelessWidget {
-  const DrillHistoryBlocConsumer({
+class DrillBlocConsumer extends StatelessWidget {
+  const DrillBlocConsumer({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DrillHistoryBloc, DrillHistoryState>(
+    return BlocConsumer<DrillBloc, DrillState>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is DrillHistoryLoading) {
+        if (state is DrillLoading) {
           return Center(
             child: Padding(
               padding: EdgeInsets.all(30),
@@ -22,13 +22,13 @@ class DrillHistoryBlocConsumer extends StatelessWidget {
           );
         }
 
-        if (state is DrillHistoryError) {
+        if (state is DrillError) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               InkWell(
                   onTap: () {
-                    context.read<DrillHistoryBloc>().add(FetchDrillHistories());
+                    context.read<DrillBloc>().add(FetchDrills());
                   },
                   child: Icon(Icons.restart_alt)),
               Text("Tap to Retry")
@@ -36,7 +36,7 @@ class DrillHistoryBlocConsumer extends StatelessWidget {
           );
         }
 
-        if (state is DrillHistorySuccess) {
+        if (state is DrillSuccess) {
           return DrillList(
             drills: state.drills,
           );
