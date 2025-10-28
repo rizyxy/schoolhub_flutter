@@ -8,7 +8,7 @@ import 'package:schoolhub_flutter/data/model/drill_question.dart';
 class DrillModel {
   int id;
   String status;
-  List<DrillQuestionModel> drillQuestions;
+  List<DrillQuestionModel>? drillQuestions;
   DrillModel({
     required this.id,
     required this.status,
@@ -31,7 +31,7 @@ class DrillModel {
     return <String, dynamic>{
       'id': id,
       'status': status,
-      'drill_questions': drillQuestions.map((x) => x.toMap()).toList(),
+      'drill_questions': drillQuestions?.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -39,11 +39,13 @@ class DrillModel {
     return DrillModel(
       id: map['id'] as int,
       status: map['status'] as String,
-      drillQuestions: List<DrillQuestionModel>.from(
-        (map['drill_questions']).map<DrillQuestionModel>(
-          (x) => DrillQuestionModel.fromMap(x as Map<String, dynamic>),
-        ),
-      ),
+      drillQuestions: map['drill_questions'] != null
+          ? List<DrillQuestionModel>.from(
+              (map['drill_questions']).map<DrillQuestionModel?>(
+                (x) => DrillQuestionModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
     );
   }
 
