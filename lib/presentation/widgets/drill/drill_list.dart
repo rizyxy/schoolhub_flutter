@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolhub_flutter/data/model/drill.dart';
+import 'package:schoolhub_flutter/presentation/views/drill_page.dart';
 import 'package:schoolhub_flutter/presentation/widgets/shared/item_card.dart';
 
 class DrillList extends StatelessWidget {
@@ -14,7 +15,12 @@ class DrillList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: drills.length,
       itemBuilder: (context, index) {
-        return ItemCard(itemName: "Drill ${drills[index].id}");
+        return InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DrillPage()));
+            },
+            child: ItemCard(itemName: "Drill ${drills[index].id}"));
       },
       separatorBuilder: (context, index) {
         return SizedBox(
