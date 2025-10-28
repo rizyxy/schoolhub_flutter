@@ -21,7 +21,14 @@ class TopicPage extends StatelessWidget {
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
+            ),
+            Text(
+              "Drill History",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
             ),
             DrillList()
           ],
