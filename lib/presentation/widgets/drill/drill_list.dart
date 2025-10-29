@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolhub_flutter/data/model/drill.dart';
+import 'package:schoolhub_flutter/presentation/bloc/drill_progression_bloc/drill_progression_bloc.dart';
 import 'package:schoolhub_flutter/presentation/views/drill_page.dart';
 import 'package:schoolhub_flutter/presentation/widgets/shared/item_card.dart';
 
@@ -17,8 +19,13 @@ class DrillList extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DrillPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                          create: (context) =>
+                              DrillProgressionBloc(drill: drills[index]),
+                          child: DrillPage())));
             },
             child: ItemCard(itemName: "Drill ${drills[index].id}"));
       },

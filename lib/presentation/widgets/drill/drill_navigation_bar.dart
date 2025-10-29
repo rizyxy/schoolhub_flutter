@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:schoolhub_flutter/presentation/bloc/drill_progression_bloc/drill_progression_bloc.dart';
 
 class DrillNavigationBar extends StatelessWidget {
   const DrillNavigationBar(
@@ -14,54 +16,41 @@ class DrillNavigationBar extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Ink(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(color: Colors.blueAccent.shade700),
-              child: Text(
-                "Next",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            InkWell(
+              onTap: () {
+                context.read<DrillProgressionBloc>().add(NextDrillQuestion());
+              },
+              child: Ink(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(color: Colors.blueAccent.shade700),
+                child: Text(
+                  "Next",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
               ),
             )
           ],
         );
       }
 
-      if (currentIndex < totalQuestions) {
+      if (currentIndex == totalQuestions - 1) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Ink(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(color: Colors.grey.shade200),
-              child: Text(
-                "Previous",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            Ink(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(color: Colors.blueAccent.shade700),
-              child: Text(
-                "Next",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        );
-      }
-
-      if (currentIndex == totalQuestions) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Ink(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(color: Colors.grey.shade200),
-              child: Text(
-                "Previous",
-                style: TextStyle(fontWeight: FontWeight.bold),
+            InkWell(
+              onTap: () {
+                context
+                    .read<DrillProgressionBloc>()
+                    .add(PreviousDrillQuestion());
+              },
+              child: Ink(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(color: Colors.grey.shade200),
+                child: Text(
+                  "Previous",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             Ink(
@@ -71,6 +60,43 @@ class DrillNavigationBar extends StatelessWidget {
                 "Finish",
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        );
+      }
+
+      if (currentIndex < totalQuestions) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            InkWell(
+              onTap: () {
+                context
+                    .read<DrillProgressionBloc>()
+                    .add(PreviousDrillQuestion());
+              },
+              child: Ink(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(color: Colors.grey.shade200),
+                child: Text(
+                  "Previous",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                context.read<DrillProgressionBloc>().add(NextDrillQuestion());
+              },
+              child: Ink(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(color: Colors.blueAccent.shade700),
+                child: Text(
+                  "Next",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ],
