@@ -8,7 +8,7 @@ import 'package:schoolhub_flutter/data/model/drill_question.dart';
 class DrillModel {
   int id;
   String status;
-  List<DrillQuestionModel>? drillQuestions;
+  List<DrillQuestionModel> drillQuestions;
   DrillModel({
     required this.id,
     required this.status,
@@ -27,29 +27,17 @@ class DrillModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'status': status,
-      'drill_questions': drillQuestions?.map((x) => x.toMap()).toList(),
-    };
-  }
-
   factory DrillModel.fromMap(Map<String, dynamic> map) {
     return DrillModel(
       id: map['id'] as int,
       status: map['status'] as String,
-      drillQuestions: map['drill_questions'] != null
-          ? List<DrillQuestionModel>.from(
-              (map['drill_questions']).map<DrillQuestionModel?>(
-                (x) => DrillQuestionModel.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
+      drillQuestions: List<DrillQuestionModel>.from(
+        (map['drillQuestions']).map<DrillQuestionModel>(
+          (x) => DrillQuestionModel.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory DrillModel.fromJson(String source) =>
       DrillModel.fromMap(json.decode(source) as Map<String, dynamic>);
