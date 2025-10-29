@@ -40,7 +40,7 @@ class DrillModel {
       id: map['id'] as int,
       status: map['status'] as String,
       drillQuestions: List<DrillQuestionModel>.from(
-        (map['drill_questions'] as List<int>).map<DrillQuestionModel>(
+        (map['drill_questions']).map<DrillQuestionModel>(
           (x) => DrillQuestionModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
