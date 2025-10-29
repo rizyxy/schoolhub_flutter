@@ -4,9 +4,9 @@ import 'dart:convert';
 import 'package:schoolhub_flutter/data/model/question.dart';
 
 class DrillQuestionModel {
-  int id;
-  String? answer;
-  QuestionModel question;
+  final int id;
+  final String? answer;
+  final QuestionModel question;
   DrillQuestionModel({
     required this.id,
     this.answer,

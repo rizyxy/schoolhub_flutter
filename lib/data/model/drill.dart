@@ -6,9 +6,9 @@ import 'package:flutter/foundation.dart';
 import 'package:schoolhub_flutter/data/model/drill_question.dart';
 
 class DrillModel {
-  int id;
-  String status;
-  List<DrillQuestionModel> drillQuestions;
+  final int id;
+  final String status;
+  final List<DrillQuestionModel> drillQuestions;
   DrillModel({
     required this.id,
     required this.status,
