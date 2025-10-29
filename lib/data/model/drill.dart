@@ -27,17 +27,27 @@ class DrillModel {
     );
   }
 
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'status': status,
+      'drill_questions': drillQuestions.map((x) => x.toMap()).toList(),
+    };
+  }
+
   factory DrillModel.fromMap(Map<String, dynamic> map) {
     return DrillModel(
       id: map['id'] as int,
       status: map['status'] as String,
       drillQuestions: List<DrillQuestionModel>.from(
-        (map['drillQuestions']).map<DrillQuestionModel>(
+        (map['drill_questions'] as List<int>).map<DrillQuestionModel>(
           (x) => DrillQuestionModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
     );
   }
+
+  String toJson() => json.encode(toMap());
 
   factory DrillModel.fromJson(String source) =>
       DrillModel.fromMap(json.decode(source) as Map<String, dynamic>);
