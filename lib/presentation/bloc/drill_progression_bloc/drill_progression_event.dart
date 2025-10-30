@@ -19,3 +19,5 @@ class AnswerDrillQuestion extends DrillProgressionEvent {
   @override
   List<Object?> get props => [answer];
 }
+
+class FinishDrillProgression extends DrillProgressionEvent {}

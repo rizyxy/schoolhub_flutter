@@ -2,18 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolhub_flutter/data/model/drill.dart';
 import 'package:schoolhub_flutter/data/model/drill_question.dart';
+import 'package:schoolhub_flutter/data/model/topic.dart';
 import 'package:schoolhub_flutter/presentation/bloc/drill_progression_bloc/drill_progression_bloc.dart';
+import 'package:schoolhub_flutter/presentation/views/topic_page.dart';
 import 'package:schoolhub_flutter/presentation/widgets/drill/drill_answer_list.dart';
 import 'package:schoolhub_flutter/presentation/widgets/drill/drill_navigation_bar.dart';
 import 'package:schoolhub_flutter/presentation/widgets/drill/drill_progress_indicator.dart';
 
 class DrillPage extends StatelessWidget {
-  const DrillPage({super.key});
+  const DrillPage({super.key, required this.topic});
+
+  final TopicModel topic;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DrillProgressionBloc, DrillProgressionState>(
+    return BlocConsumer<DrillProgressionBloc, DrillProgressionState>(
+      listener: (context, state) {
+        if (state is DrillProgressionFinished) {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => TopicPage(topic: topic)));
+        }
+      },
       builder: (context, state) {
+        if (state is DrillProgressionLoading ||
+            state is DrillProgressionFinished) {
+          return Scaffold(
+            body: SafeArea(
+                child: Center(
+              child: CircularProgressIndicator(),
+            )),
+          );
+        }
+
         DrillProgressionLoaded currentState = state as DrillProgressionLoaded;
 
         DrillModel currentDrill = currentState.drill;

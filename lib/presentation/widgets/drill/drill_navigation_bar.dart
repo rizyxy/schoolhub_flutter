@@ -53,13 +53,20 @@ class DrillNavigationBar extends StatelessWidget {
                 ),
               ),
             ),
-            Ink(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(color: Colors.red.shade800),
-              child: Text(
-                "Finish",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            InkWell(
+              onTap: () {
+                context
+                    .read<DrillProgressionBloc>()
+                    .add(FinishDrillProgression());
+              },
+              child: Ink(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(color: Colors.red.shade800),
+                child: Text(
+                  "Finish",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ],

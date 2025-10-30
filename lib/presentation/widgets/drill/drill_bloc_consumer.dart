@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:schoolhub_flutter/data/model/topic.dart';
 import 'package:schoolhub_flutter/presentation/bloc/drill_bloc/drill_bloc.dart';
 import 'package:schoolhub_flutter/presentation/widgets/drill/drill_list.dart';
 
 class DrillBlocConsumer extends StatelessWidget {
-  const DrillBlocConsumer({
-    super.key,
-  });
+  const DrillBlocConsumer({super.key, required this.topic});
+
+  final TopicModel topic;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +39,7 @@ class DrillBlocConsumer extends StatelessWidget {
 
         if (state is DrillSuccess) {
           return DrillList(
+            topic: topic,
             drills: state.drills,
           );
         }

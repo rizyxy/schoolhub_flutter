@@ -19,4 +19,18 @@ class DrillRepository {
 
     return drills;
   }
+
+  Future<int> updateDrill({required DrillModel drill}) async {
+    final Uri uri = Uri.parse("$baseUrl/${drill.id}/update");
+
+    final response = await http.put(
+      uri,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(drill.toMap()),
+    );
+
+    return response.statusCode;
+  }
 }

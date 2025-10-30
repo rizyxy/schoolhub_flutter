@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolhub_flutter/data/model/drill.dart';
+import 'package:schoolhub_flutter/data/model/topic.dart';
 import 'package:schoolhub_flutter/presentation/bloc/drill_progression_bloc/drill_progression_bloc.dart';
 import 'package:schoolhub_flutter/presentation/views/drill_page.dart';
 import 'package:schoolhub_flutter/presentation/widgets/shared/item_card.dart';
 
 class DrillList extends StatelessWidget {
-  const DrillList({super.key, required this.drills});
+  const DrillList({super.key, required this.topic, required this.drills});
 
   final List<DrillModel> drills;
+  final TopicModel topic;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,9 @@ class DrillList extends StatelessWidget {
                       builder: (context) => BlocProvider(
                           create: (context) =>
                               DrillProgressionBloc(drill: drills[index]),
-                          child: DrillPage())));
+                          child: DrillPage(
+                            topic: topic,
+                          ))));
             },
             child: ItemCard(itemName: "Drill ${drills[index].id}"));
       },

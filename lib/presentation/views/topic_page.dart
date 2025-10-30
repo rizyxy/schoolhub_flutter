@@ -35,7 +35,9 @@ class TopicPage extends StatelessWidget {
             ),
             BlocProvider(
                 create: (context) => DrillBloc()..add(FetchDrills()),
-                child: DrillBlocConsumer())
+                child: DrillBlocConsumer(
+                  topic: topic,
+                ))
           ],
         ),
       )),

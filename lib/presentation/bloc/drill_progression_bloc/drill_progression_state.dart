@@ -10,10 +10,15 @@ sealed class DrillProgressionState extends Equatable {
 class DrillProgressionLoaded extends DrillProgressionState {
   final DrillModel drill;
   final int currentQuestionIndex;
+  final String? errorMessage;
 
   const DrillProgressionLoaded(
-      {required this.drill, this.currentQuestionIndex = 0});
+      {required this.drill, this.currentQuestionIndex = 0, this.errorMessage});
 
   @override
-  List<Object?> get props => [drill, currentQuestionIndex];
+  List<Object?> get props => [drill, currentQuestionIndex, errorMessage];
 }
+
+class DrillProgressionLoading extends DrillProgressionState {}
+
+class DrillProgressionFinished extends DrillProgressionState {}
