@@ -5,10 +5,16 @@ import 'package:schoolhub_flutter/presentation/bloc/drill_progression_bloc/drill
 
 class DrillAnswerList extends StatelessWidget {
   const DrillAnswerList(
-      {super.key, required this.answerList, this.selectedAnswer});
+      {super.key,
+      required this.answerList,
+      required this.drillStatus,
+      required this.correctAnswer,
+      this.selectedAnswer});
 
   final List<Map<String, String>> answerList;
+  final String drillStatus;
   final String? selectedAnswer;
+  final String correctAnswer;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +24,24 @@ class DrillAnswerList extends StatelessWidget {
       itemCount: 4,
       itemBuilder: (context, index) {
         return InkWell(
-          onTap: () {
-            context
-                .read<DrillProgressionBloc>()
-                .add(AnswerDrillQuestion(answer: answerList[index]['label']!));
-          },
+          onTap: drillStatus == 'finished'
+              ? null
+              : () {
+                  context.read<DrillProgressionBloc>().add(
+                      AnswerDrillQuestion(answer: answerList[index]['label']!));
+                },
           child: Ink(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-                color: answerList[index]['label'] == selectedAnswer
-                    ? Colors.blueAccent.shade700
-                    : Colors.grey.shade200),
-            child: Text(answerList[index]['answer']!),
+                color: answerList[index]['label'] == correctAnswer
+                    ? Colors.green.shade600
+                    : answerList[index]['label'] == selectedAnswer &&
+                            selectedAnswer != correctAnswer
+                        ? Colors.red.shade800
+                        : Colors.grey.shade200),
+            child: Text(
+              answerList[index]['answer']!,
+            ),
           ),
         );
       },

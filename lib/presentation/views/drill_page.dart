@@ -44,6 +44,7 @@ class DrillPage extends StatelessWidget {
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.all(30),
             child: DrillNavigationBar(
+              drillStatus: currentDrill.status,
               currentIndex: currentState.currentQuestionIndex,
               totalQuestions: currentDrill.drillQuestions.length,
             ),
@@ -85,8 +86,34 @@ class DrillPage extends StatelessWidget {
                         'label': 'd'
                       },
                     ],
+                    correctAnswer: currentDrillQuestion.question.correctAnswer,
+                    drillStatus: currentDrill.status,
                     selectedAnswer: currentDrillQuestion.answer,
-                  )
+                  ),
+                  Builder(builder: (context) {
+                    if (currentDrill.status == 'finished') {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "Explanation",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(currentDrillQuestion.question.explanation ??
+                              "No explanation provided")
+                        ],
+                      );
+                    }
+
+                    return SizedBox.shrink();
+                  })
                 ],
               ),
             ),

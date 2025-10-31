@@ -15,7 +15,7 @@ class DrillBloc extends Bloc<DrillEvent, DrillState> {
 
       try {
         List<DrillModel> drills =
-            await drillRepository.fetchDrills(status: 'running');
+            await drillRepository.fetchDrills(status: 'finished');
 
         emit(DrillSuccess(drills: drills));
       } catch (e) {

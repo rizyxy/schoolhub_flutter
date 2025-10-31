@@ -4,8 +4,12 @@ import 'package:schoolhub_flutter/presentation/bloc/drill_progression_bloc/drill
 
 class DrillNavigationBar extends StatelessWidget {
   const DrillNavigationBar(
-      {super.key, required this.currentIndex, required this.totalQuestions});
+      {super.key,
+      required this.drillStatus,
+      required this.currentIndex,
+      required this.totalQuestions});
 
+  final String drillStatus;
   final int currentIndex;
   final int totalQuestions;
 
@@ -57,9 +61,13 @@ class DrillNavigationBar extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                context
-                    .read<DrillProgressionBloc>()
-                    .add(FinishDrillProgression());
+                if (drillStatus == 'finished') {
+                  Navigator.pop(context);
+                } else if (drillStatus == 'running') {
+                  context
+                      .read<DrillProgressionBloc>()
+                      .add(FinishDrillProgression());
+                }
               },
               child: Ink(
                 padding:

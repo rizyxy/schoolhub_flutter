@@ -26,8 +26,8 @@ class TopicPage extends StatelessWidget {
               height: 10,
             ),
             const Text(
-              "Ongoing Drills",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              "All Drills",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
