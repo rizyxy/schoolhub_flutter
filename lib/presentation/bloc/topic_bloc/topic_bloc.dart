@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/retry.dart';
 import 'package:schoolhub_flutter/data/model/subject.dart';
 import 'package:schoolhub_flutter/data/model/topic.dart';
 import 'package:schoolhub_flutter/data/repository/subject_repository.dart';

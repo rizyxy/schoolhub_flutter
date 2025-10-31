@@ -10,7 +10,7 @@ void main(List<String> args) async {
   runApp(MultiBlocProvider(providers: [
     BlocProvider<SubjectBloc>(
         create: (context) => SubjectBloc()..add(FetchSubjects()))
-  ], child: SchoolHub()));
+  ], child: const SchoolHub()));
 }
 
 class SchoolHub extends StatelessWidget {

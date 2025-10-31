@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolhub_flutter/data/model/subject.dart';
 import 'package:schoolhub_flutter/presentation/bloc/topic_bloc/topic_bloc.dart';
-import 'package:schoolhub_flutter/presentation/widgets/shared/item_card.dart';
 import 'package:schoolhub_flutter/presentation/widgets/topic/topic_list.dart';
 
 class TopicBlocConsumer extends StatelessWidget {
@@ -21,7 +20,7 @@ class TopicBlocConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is TopicLoading) {
-          return Center(
+          return const Center(
             child: Padding(
               padding: EdgeInsets.all(30),
               child: CircularProgressIndicator(),
@@ -39,8 +38,8 @@ class TopicBlocConsumer extends StatelessWidget {
                         .read<TopicBloc>()
                         .add(FetchTopics(subject: subject));
                   },
-                  child: Icon(Icons.restart_alt)),
-              Text("Tap to Retry")
+                  child: const Icon(Icons.restart_alt)),
+              const Text("Tap to Retry")
             ],
           );
         }
@@ -51,7 +50,7 @@ class TopicBlocConsumer extends StatelessWidget {
           );
         }
 
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       },
     );
   }

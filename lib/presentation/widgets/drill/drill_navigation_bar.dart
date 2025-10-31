@@ -21,9 +21,10 @@ class DrillNavigationBar extends StatelessWidget {
                 context.read<DrillProgressionBloc>().add(NextDrillQuestion());
               },
               child: Ink(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(color: Colors.blueAccent.shade700),
-                child: Text(
+                child: const Text(
                   "Next",
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
@@ -45,9 +46,10 @@ class DrillNavigationBar extends StatelessWidget {
                     .add(PreviousDrillQuestion());
               },
               child: Ink(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(color: Colors.grey.shade200),
-                child: Text(
+                child: const Text(
                   "Previous",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -60,9 +62,10 @@ class DrillNavigationBar extends StatelessWidget {
                     .add(FinishDrillProgression());
               },
               child: Ink(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(color: Colors.red.shade800),
-                child: Text(
+                child: const Text(
                   "Finish",
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
@@ -84,9 +87,10 @@ class DrillNavigationBar extends StatelessWidget {
                     .add(PreviousDrillQuestion());
               },
               child: Ink(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(color: Colors.grey.shade200),
-                child: Text(
+                child: const Text(
                   "Previous",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -97,9 +101,10 @@ class DrillNavigationBar extends StatelessWidget {
                 context.read<DrillProgressionBloc>().add(NextDrillQuestion());
               },
               child: Ink(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(color: Colors.blueAccent.shade700),
-                child: Text(
+                child: const Text(
                   "Next",
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
@@ -110,7 +115,7 @@ class DrillNavigationBar extends StatelessWidget {
         );
       }
 
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     });
   }
 }

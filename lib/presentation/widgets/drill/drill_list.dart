@@ -15,7 +15,7 @@ class DrillList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: drills.length,
       itemBuilder: (context, index) {
@@ -34,7 +34,7 @@ class DrillList extends StatelessWidget {
             child: ItemCard(itemName: "Drill ${drills[index].id}"));
       },
       separatorBuilder: (context, index) {
-        return SizedBox(
+        return const SizedBox(
           height: 20,
         );
       },

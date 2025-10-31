@@ -15,7 +15,7 @@ class DrillBlocConsumer extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         if (state is DrillLoading) {
-          return Center(
+          return const Center(
             child: Padding(
               padding: EdgeInsets.all(30),
               child: CircularProgressIndicator(),
@@ -31,8 +31,8 @@ class DrillBlocConsumer extends StatelessWidget {
                   onTap: () {
                     context.read<DrillBloc>().add(FetchDrills());
                   },
-                  child: Icon(Icons.restart_alt)),
-              Text("Tap to Retry")
+                  child: const Icon(Icons.restart_alt)),
+              const Text("Tap to Retry")
             ],
           );
         }
@@ -44,7 +44,7 @@ class DrillBlocConsumer extends StatelessWidget {
           );
         }
 
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       },
     );
   }

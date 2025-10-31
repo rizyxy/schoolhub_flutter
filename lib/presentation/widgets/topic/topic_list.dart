@@ -12,7 +12,7 @@ class TopicList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return InkWell(
               onTap: () {
@@ -26,7 +26,7 @@ class TopicList extends StatelessWidget {
               child: ItemCard(itemName: topics[index].name));
         },
         separatorBuilder: (context, index) {
-          return SizedBox(
+          return const SizedBox(
             height: 20,
           );
         },

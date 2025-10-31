@@ -16,12 +16,12 @@ class DrillProgressIndicator extends StatelessWidget {
             value: currentIndex / totalQuestions,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
         Text(
           "$currentIndex/$totalQuestions",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ],
     );

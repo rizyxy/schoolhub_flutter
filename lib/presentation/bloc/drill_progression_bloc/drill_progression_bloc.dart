@@ -77,14 +77,12 @@ class DrillProgressionBloc
         } else {
           emit(DrillProgressionLoaded(
               drill: prevState.drill,
-              errorMessage: "An error has occured : ${responseCode}"));
+              errorMessage: "An error has occured : $responseCode"));
         }
       } catch (e) {
         emit(DrillProgressionLoaded(
             drill: prevState.drill, errorMessage: e.toString()));
       }
-
-      ;
     });
   }
 }

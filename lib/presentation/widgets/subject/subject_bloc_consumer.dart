@@ -15,7 +15,7 @@ class SubjectBlocConsumer extends StatelessWidget {
       }
     }, builder: (context, state) {
       if (state is SubjectLoading) {
-        return Center(
+        return const Center(
           child: Padding(
             padding: EdgeInsets.all(30),
             child: CircularProgressIndicator(),
@@ -31,8 +31,8 @@ class SubjectBlocConsumer extends StatelessWidget {
                 onTap: () {
                   context.read<SubjectBloc>().add(FetchSubjects());
                 },
-                child: Icon(Icons.restart_alt)),
-            Text("Tap to Retry")
+                child: const Icon(Icons.restart_alt)),
+            const Text("Tap to Retry")
           ],
         );
       }
@@ -43,7 +43,7 @@ class SubjectBlocConsumer extends StatelessWidget {
         );
       }
 
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     });
   }
 }

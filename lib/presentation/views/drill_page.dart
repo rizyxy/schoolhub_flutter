@@ -26,7 +26,7 @@ class DrillPage extends StatelessWidget {
       builder: (context, state) {
         if (state is DrillProgressionLoading ||
             state is DrillProgressionFinished) {
-          return Scaffold(
+          return const Scaffold(
             body: SafeArea(
                 child: Center(
               child: CircularProgressIndicator(),
@@ -50,7 +50,7 @@ class DrillPage extends StatelessWidget {
           ),
           body: SafeArea(
               child: Padding(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -59,11 +59,11 @@ class DrillPage extends StatelessWidget {
                     currentIndex: currentState.currentQuestionIndex + 1,
                     totalQuestions: currentState.drill.drillQuestions.length,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(currentDrillQuestion.question.question),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   DrillAnswerList(

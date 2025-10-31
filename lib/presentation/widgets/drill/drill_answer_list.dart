@@ -13,7 +13,7 @@ class DrillAnswerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 4,
       itemBuilder: (context, index) {
@@ -24,7 +24,7 @@ class DrillAnswerList extends StatelessWidget {
                 .add(AnswerDrillQuestion(answer: answerList[index]['label']!));
           },
           child: Ink(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
                 color: answerList[index]['label'] == selectedAnswer
                     ? Colors.blueAccent.shade700
@@ -34,7 +34,7 @@ class DrillAnswerList extends StatelessWidget {
         );
       },
       separatorBuilder: (context, index) {
-        return SizedBox(
+        return const SizedBox(
           height: 20,
         );
       },
